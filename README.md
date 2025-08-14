@@ -18,3 +18,32 @@ A feature-rich real estate platform built with modern web technologies, designed
 - **Accessibility**: WCAG 2.1 compliant components
 - **Fast Navigation**: Instant page transitions with React Router
 
+### 🎨 UI/UX Features
+- **Animated Transitions**: Smooth hover and scroll effects
+- **Dark/Light Mode**: Optional theme switching (easy to implement)
+- **Image Optimization**: Lazy loading and responsive images
+- **Form Validation**: Robust contact form with error handling
+
+## 🛠 Technology Stack
+
+| Category       | Technology               |
+|----------------|--------------------------|
+| Framework      | React 18+               |
+| Styling        | Tailwind CSS 3+         |
+| Animations     | Framer Motion           |
+| Routing        | React Router 6+         |
+| Icons          | Heroicons               |
+| Build Tool     | Vite (recommended)      |
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 16+
+- npm/yarn/pnpm
+
+### Installation Guide
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/real-estate-website.git
+cd real-estate-website
