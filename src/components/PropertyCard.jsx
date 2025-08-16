@@ -71,7 +71,74 @@ const PropertyCard = ({ property }) => {
           )}
         </div>
       </div>
+  {/* Property Details */}
+      <div className="p-4">
+        <div className="flex justify-between items-start mb-2">
+          <h3 className="text-xl font-bold text-dark hover:text-primary transition-colors cursor-pointer">
+            {property.title}
+          </h3>
+          <span className="bg-primary text-white text-xs px-2 py-1 rounded uppercase">
+            {property.type}
+          </span>
+        </div>
 
+        <div className="flex items-center text-gray-600 mb-2">
+          <FaMapMarkerAlt className="mr-1 text-sm" />
+          <p className="text-sm">{property.address}</p>
+        </div>
+
+        <div className="flex justify-between text-sm text-gray-500 mb-4 border-b border-gray-200 pb-4">
+          <span className="flex items-center">
+            <FaBed className="mr-1" /> {property.bedrooms}
+          </span>
+          <span className="flex items-center">
+            <FaBath className="mr-1" /> {property.bathrooms}
+          </span>
+          <span className="flex items-center">
+            <FaRulerCombined className="mr-1" /> {property.area.toLocaleString()} sqft
+          </span>
+        </div>
+
+        <div className="flex justify-between items-center">
+          <div>
+            <span className="text-xl font-bold text-primary block">{formatPrice(property.price)}</span>
+            {property.pricePerSqft && (
+              <span className="text-xs text-gray-500">${property.pricePerSqft}/sqft</span>
+            )}
+          </div>
+          <button className="bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg transition-colors">
+            View Details
+          </button>
+        </div>
+
+        {/* Additional Info */}
+        {property.yearBuilt && (
+          <div className="mt-3 pt-3 border-t border-gray-200 text-xs text-gray-500">
+            Built: {property.yearBuilt}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+PropertyCard.propTypes = {
+  property: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    title: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    address: PropTypes.string.isRequired,
+    bedrooms: PropTypes.number.isRequired,
+    bathrooms: PropTypes.number.isRequired,
+    area: PropTypes.number.isRequired,
+    price: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
+    featured: PropTypes.bool,
+    status: PropTypes.oneOf(['For Sale', 'For Rent', 'Sold', 'Pending']),
+    pricePerSqft: PropTypes.number,
+    yearBuilt: PropTypes.number,
+  }).isRequired,
+};
     
 
 export default PropertyCard;
