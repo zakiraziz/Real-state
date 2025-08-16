@@ -109,3 +109,93 @@ const Search = ({ onSearch }) => {
             </button>
           </div>
         </div>
+
+        {/* Advanced Search Options */}
+        {searchParams.advancedOpen && (
+          <div className="mt-4 pt-4 border-t border-gray-200 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Bedrooms</label>
+              <select
+                name="bedrooms"
+                className="w-full p-2 border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
+                value={searchParams.bedrooms}
+                onChange={handleChange}
+              >
+                <option value="">Any</option>
+                <option>1+</option>
+                <option>2+</option>
+                <option>3+</option>
+                <option>4+</option>
+                <option>5+</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Bathrooms</label>
+              <select
+                name="bathrooms"
+                className="w-full p-2 border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
+                value={searchParams.bathrooms}
+                onChange={handleChange}
+              >
+                <option value="">Any</option>
+                <option>1+</option>
+                <option>2+</option>
+                <option>3+</option>
+                <option>4+</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Square Feet</label>
+              <div className="flex space-x-2">
+                <input
+                  type="number"
+                  placeholder="Min"
+                  className="w-full p-2 border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
+                />
+                <input
+                  type="number"
+                  placeholder="Max"
+                  className="w-full p-2 border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
+                />
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Recently Searched Tags */}
+        <div className="mt-4 flex flex-wrap gap-2">
+          <span className="text-sm text-gray-500">Popular: </span>
+          <button
+            type="button"
+            onClick={() => setSearchParams(prev => ({ ...prev, type: 'House', priceRange: '$300,000 - $500,000' }))}
+            className="text-xs bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1 rounded-full transition"
+          >
+            Houses $300-500K
+          </button>
+          <button
+            type="button"
+            onClick={() => setSearchParams(prev => ({ ...prev, type: 'Apartment', bedrooms: '2+' }))}
+            className="text-xs bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1 rounded-full transition"
+          >
+            2+ Bed Apartments
+          </button>
+          <button
+            type="button"
+            onClick={() => setSearchParams(prev => ({ ...prev, location: 'New York' }))}
+            className="text-xs bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1 rounded-full transition"
+          >
+            New York
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+Search.propTypes = {
+  onSearch: PropTypes.func.isRequired
+};
+
+export default Search;
